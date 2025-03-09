@@ -5,18 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coach AR</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
-<body style="text-align: center;">
+<body>
     <h1>Coach en Réalité Augmentée</h1>
+
+    <!-- Modèle AR -->
     <model-viewer 
-        src="https://raw.githubusercontent.com/terenceSTR/AR/abdos_compressed.glb" 
+        src="https://raw.githubusercontent.com/tonpseudo/coach-ar/main/coach.glb" 
         ar 
-        ar-modes="webxr scene-viewer quick-look" 
+        ar-modes="webxr scene-viewer quick-look"
         camera-controls 
         auto-rotate
-         alt="Coach AR"
+        alt="Coach AR"
+        ios-src="https://raw.githubusercontent.com/terenceSTR/AR/abdos_compressed.glb"
         style="width: 100%; height: 500px;">
     </model-viewer>
+
     <p>Scannez ce QR code pour voir en AR !</p>
+
+    <!-- Test d'erreur dans le navigateur -->
+    <script>
+        const modelViewer = document.querySelector('model-viewer');
+        modelViewer.addEventListener('load', () => {
+            console.log("Modèle AR chargé !");
+        });
+        modelViewer.addEventListener('error', (e) => {
+            console.error("Erreur lors du chargement du modèle AR", e);
+        });
+    </script>
 </body>
 </html>
